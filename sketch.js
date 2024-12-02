@@ -7,8 +7,8 @@
 // Demo: https://loonywizard.github.io/js-confetti/
 // GitHub Repository: https://github.com/loonywizard/js-confetti?tab=readme-ov-file for more information
 
-// Original server-side game website version 1:https://au.vtc.vn/
-// Official server-side game website version 2:https://au2pc.vtcgame.vn/
+// Original Vietnam private server game website version 1:https://au.vtc.vn/
+// Official Vietnam private server game website version 2:https://au2pc.vtcgame.vn/
 
 // example gameplay that I used to play back in 2012:https://www.youtube.com/watch?v=1_CfktSym0E
 
@@ -77,7 +77,7 @@ let pass = true;           // Indicates if the player successfully passed the ro
 let isStartGame = true;    // Flag to check if the game has just started
 let score = 0;             // Player's current score
 let win = false;           // Indicates if the player has won the game
-let timePerRoutine = 3000; // Time allocated per routine (3 seconds)
+let timePerRoutine = 3500; // Time allocated per routine (3.5 seconds)
 let bgsong;                // Variable to hold the currently playing background music
 
 //-UI element variables-----------------
