@@ -100,14 +100,14 @@ const soundFiles = [
 ];
 
 const gameSounds = [
-  'assets/Turbo - Black Cat.mp3',                       // Gameplay sound effect 1
-  'assets/Audition - How to Say.mp3',                   // Gameplay sound effect 2
-  'assets/Audition - Mr. Detective.mp3',                // Gameplay sound effect 3
-  'assets/Audition - You Are Here No More.mp3',         // Gameplay sound effect 4
-  'assets/Audition - Tuyết Yêu Thương.m4a',             // Gameplay sound effect 5
-  'assets/Audition - Please Tell Me Why FreeStyle.m4a', // Gameplay sound effect 6
-  'assets/Audition - Never Say Goodbye.m4a',            // Gameplay sound effect 7
-  'assets/BIGBANG - LIES.m4a'                           // Gameplay sound effect 8
+  'assets/Turbo - Black Cat.mp3',                       // Gameplay sound 1
+  'assets/Audition - How to Say.mp3',                   // Gameplay sound 2
+  'assets/Audition - Mr. Detective.mp3',                // Gameplay sound 3
+  'assets/Audition - You Are Here No More.mp3',         // Gameplay sound 4
+  'assets/Audition - Tuyết Yêu Thương.m4a',             // Gameplay sound 5
+  'assets/Audition - Please Tell Me Why FreeStyle.m4a', // Gameplay sound 6
+  'assets/Audition - Never Say Goodbye.m4a',            // Gameplay sound 7
+  'assets/BIGBANG - LIES.m4a'                           // Gameplay sound 8
 ];
 
 //-Preload-function---------------------
