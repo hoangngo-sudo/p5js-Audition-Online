@@ -1,4 +1,3 @@
-
 // sketch.js
 // Audition Online
 
@@ -8,8 +7,8 @@
 // Demo: https://loonywizard.github.io/js-confetti/
 // GitHub Repository: https://github.com/loonywizard/js-confetti?tab=readme-ov-file for more information
 
-// Original Vietnam private server game website version 1:https://au.vtc.vn/
-// Official Vietnam private server game website version 2:https://au2pc.vtcgame.vn/
+// Original server-side game website version 1:https://au.vtc.vn/
+// Official server-side game website version 2:https://au2pc.vtcgame.vn/
 
 // example gameplay that I used to play back in 2012:https://www.youtube.com/watch?v=1_CfktSym0E
 
@@ -27,7 +26,7 @@ let fadeAmount = 1; // Determines the rate at which 'fade' changes (positive for
 //-Script and Instruction Variables------
 //---------------------------------------
 
-let scriptCount = 0;                                               // Index to track the current script/message being displayed in the intro
+let scriptCount = 0; // Index to track the current script/message being displayed in the intro
 const scripts = [
   `Welcome to p5js Audition Online`,                               // Introduction message
   `We are here to help you become a professional audition dancer`, 
@@ -36,7 +35,7 @@ const scripts = [
   `Now, without further ado, let's practice together`,
 ];
 
-let instruction = `To become a professional dancer, you need to learn through practicing basic routines and knowing your moves. This small game will help you to practice your reflexes. The game will generate random moves each time you play in a routine. To win this game, you would have to remember the moves and the order of each move. There are arrows to help you which key you should press when you see a specific move. You have three hearts representing your trials, and you have to complete a routine within a frame of time to secure these hearts. The game will end when you lose all your hearts. This game is a small version of the actual game. In the actual game, you have to remember each move and its corresponding order (arrow). The more times you play, the sooner you will become a professional audition dancer. Good luck! 
+let instruction = `In order to become a professional dancer, you need to learn through practicing basic routines and knowing your moves. This small game will help you to practice your reflexes. The game will generate random moves each time you play in a routine. To win this game, you would have to remember the moves and the order of each move. There are arrows to help you which key you should press when you see a specific move. You have three hearts representing your trials, and you have to complete a routine within a frame of time to secure these hearts. The game will end when you lose all your hearts. This game is a small version of the actual game. In the actual game, you have to remember each move and its corresponding order (arrow). The more times you play, the sooner you will become a professional audition dancer. Good luck! 
 
 (Press ESC to continue)`; // Detailed instruction
 
@@ -44,12 +43,12 @@ let instruction = `To become a professional dancer, you need to learn through pr
 //-Game-Assets-Variables----------------
 //--------------------------------------
 
-let move1, move2, move3, move4;   // Objects to store different dance move images (combos)
-let z;                            // Random index to select a combo from the 'combo' array
-let combo;                        // Array holding all available combos
-let arrows;                       // Array holding arrow images used for indicating player input
-let standardHeight;               // Standard height for images to maintain consistency
-let font;                         // Variable to store the custom font
+let move1, move2, move3, move4; // Objects to store different dance move images (combos)
+let z; // Random index to select a combo from the 'combo' array
+let combo; // Array holding all available combos
+let arrows; // Array holding arrow images used for indicating player input
+let standardHeight; // Standard height for images to maintain consistency
+let font; // Variable to store the custom font
 
 //-Sound-Variables----------------------
 //--------------------------------------
@@ -69,7 +68,7 @@ let loadingStartTime = null;     // Timestamp when the loading screen starts
 //--------------------------------------
 
 let characterCount = 0;    // Counter for displaying characters progressively in the 'showCharr' function
-let lives = 12;             // Player's remaining lives (represented as hearts)
+let lives = 5;             // Player's remaining lives (represented as hearts)
 let hit = 0;               // Number of correct moves made by the player in the current routine
 let userKey = -1;          // Stores the player's last key input
 let routine;               // Array storing the sequence of moves generated for the player to follow
@@ -78,7 +77,7 @@ let pass = true;           // Indicates if the player successfully passed the ro
 let isStartGame = true;    // Flag to check if the game has just started
 let score = 0;             // Player's current score
 let win = false;           // Indicates if the player has won the game
-let timePerRoutine = 3500; // Time allocated per routine (3.5 seconds)
+let timePerRoutine = 4000; // Time allocated per routine (4 seconds)
 let bgsong;                // Variable to hold the currently playing background music
 
 //-UI element variables-----------------
@@ -101,14 +100,14 @@ const soundFiles = [
 ];
 
 const gameSounds = [
-  'assets/Turbo - Black Cat.mp3',                       // Gameplay sound 1
-  'assets/Audition - How to Say.mp3',                   // Gameplay sound 2
-  'assets/Audition - Mr. Detective.mp3',                // Gameplay sound 3
-  'assets/Audition - You Are Here No More.mp3',         // Gameplay sound 4
-  'assets/Audition - Tuyết Yêu Thương.m4a',             // Gameplay sound 5
-  'assets/Audition - Please Tell Me Why FreeStyle.m4a', // Gameplay sound 6
-  'assets/Audition - Never Say Goodbye.m4a',            // Gameplay sound 7
-  'assets/BIGBANG - LIES.m4a'                           // Gameplay sound 8
+  'assets/Turbo - Black Cat.mp3',                       // Gameplay sound effect 1
+  'assets/Audition - How to Say.mp3',                   // Gameplay sound effect 2
+  'assets/Audition - Mr. Detective.mp3',                // Gameplay sound effect 3
+  'assets/Audition - You Are Here No More.mp3',         // Gameplay sound effect 4
+  'assets/Audition - Tuyết Yêu Thương.m4a',             // Gameplay sound effect 5
+  'assets/Audition - Please Tell Me Why FreeStyle.m4a', // Gameplay sound effect 6
+  'assets/Audition - Never Say Goodbye.m4a',            // Gameplay sound effect 7
+  'assets/BIGBANG - LIES.m4a'                           // Gameplay sound effect 8
 ];
 
 //-Preload-function---------------------
@@ -135,7 +134,7 @@ function preload() {
   logo2 = loadImage('assets/auditionLogo2.png');  // Secondary logo image
 
   // Load caution image
-  caution = loadImage('assets/caution.png'); // Caution PNG image will be displayed in stage 0
+  caution = loadImage('assets/caution.png'); // Caution PNG image displayed in stage 0
 
   // Load sound effects
   award = loadSound('assets/award.wav');                     // Sound played when the player wins
@@ -143,7 +142,7 @@ function preload() {
   hand_clapping = loadSound('assets/hand_clapping.wav');     // Sound effect for hand clapping
   lose = loadSound('assets/lose.wav');                       // Sound played when the player loses
 
-  // Load loading screen
+  // Load loading screen GIF
   awaitImg = loadImage('assets/await.gif'); // Loading GIF image
 
   // Preload Background Music (soundFiles)
@@ -278,48 +277,48 @@ function restartGame() { // Function to reset and restart the game
     currentGameSound.stop(); // Stop the currently playing game sound if it exists
   }
 
-  stage = 6;                 // Set the stage to 6 (loading screen)
-  score = 0;                 // Reset the player's score to 0
-  lives = 10;                 // Reset the player's lives to 5
-  routineLength = 4;         // Reset the routine length to its initial value of 4
-  hit = 0;                   // Reset the hit counter to 0
-  isStartGame = true;        // Set the flag to indicate the game is starting
-  win = false;               // Reset the win flag to false
-  characterCount = 0;        // Reset the character counter to 0
-  userKey = -1;              // Reset the user's key input to -1 (no input)
-  routine = [];              // Clear the current dance routine array
-  restartButton.hide();      // Hide the restart button after restarting the game
-  fade = 0;                  // Reset the fade value to 0 for text effects
+  stage = 6;                // Set the stage to 6 (loading screen)
+  score = 0;                // Reset the player's score to 0
+  lives = 5;                // Reset the player's lives to 5
+  routineLength = 4;        // Reset the routine length to its initial value of 4
+  hit = 0;                  // Reset the hit counter to 0
+  isStartGame = true;       // Set the flag to indicate the game is starting
+  win = false;              // Reset the win flag to false
+  characterCount = 0;       // Reset the character counter to 0
+  userKey = -1;             // Reset the user's key input to -1 (no input)
+  routine = [];             // Clear the current dance routine array
+  restartButton.hide();     // Hide the restart button after restarting the game
+  fade = 0;                 // Reset the fade value to 0 for text effects
   stage5SoundPlayed = false; // Reset the flag to allow sounds to be played again in stage 5
-  loadingStartTime = null;   // Reset the loading start time for future loading screens
-  submitButton.hide();       // Hide the submit button after restarting the game
-  quitButton.hide();         // Hide the quit button after restarting the game
+  loadingStartTime = null;  // Reset the loading start time for future loading screens
+  submitButton.hide();      // Hide the submit button after restarting the game
+  quitButton.hide();        // Hide the quit button after restarting the game
 }
 
 //-Quit-name-function-------------------
 //--------------------------------------
 
 function quitGame() { // Function to quit the game and return to the start screen
-  stage = 0;                 // Reset the game stage to 0
-  score = 0;                 // Reset the player's score to 0
-  lives = 5;                 // Reset the player's lives to 5
-  routineLength = 4;         // Reset the routine length to its initial value of 4
-  hit = 0;                   // Reset the hit counter to 0
-  isStartGame = true;        // Set the flag to indicate the game is starting
-  win = false;               // Reset the win flag to false
-  characterCount = 0;        // Reset the character counter to 0
-  userKey = -1;              // Reset the user's key input to no input
-  routine = [];              // Clear the current dance routine array
-  restartButton.hide();      // Hide the restart button after quitting the game
-  quitButton.hide();         // Hide the quit button after quitting the game
-  fade = 0;                  // Reset the fade value to 0 for text effects
+  stage = 0;                // Reset the game stage to 0 (start screen)
+  score = 0;                // Reset the player's score to 0
+  lives = 5;                // Reset the player's lives to 5
+  routineLength = 4;        // Reset the routine length to its initial value of 4
+  hit = 0;                  // Reset the hit counter to 0
+  isStartGame = true;       // Set the flag to indicate the game is starting
+  win = false;              // Reset the win flag to false
+  characterCount = 0;       // Reset the character counter to 0
+  userKey = -1;             // Reset the user's key input to -1 (no input)
+  routine = [];             // Clear the current dance routine array
+  restartButton.hide();     // Hide the restart button after quitting the game
+  quitButton.hide();        // Hide the quit button after quitting the game
+  fade = 0;                 // Reset the fade value to 0 for text effects
   stage5SoundPlayed = false; // Reset the flag to allow sounds to be played again in stage 5
 
   // Restart background music by selecting a new random track
   let bgSound = random(preloadedSoundFiles); // Randomly select a background music track
-  if (bgSound.isLoaded()) {                  // Check if the selected background music is fully loaded
-    bgSound.loop();                          // Play the background music in a loop
-    bgsong = bgSound;  
+  if (bgSound.isLoaded()) { // Check if the selected background music is fully loaded
+    bgSound.loop();    // Play the background music in a loop
+    bgsong = bgSound;  // Assign the playing background music to 'bgsong' for future reference
   }
 
   loadingStartTime = null; // Reset the loading start time for future loading screens
@@ -329,17 +328,17 @@ function quitGame() { // Function to quit the game and return to the start scree
 //--------------------------------------
 
 function checkRoutine() {
-  if (stage == 4) {           // Only execute if the game is in stage 4 (active gameplay stage)
-    if (isStartGame) {        // If the game has just started
-      generateRoutine();      // Generate a new dance routine for the player to follow
-      isStartGame = false;    // Set the flag to false to prevent regenerating the routine multiple times
+  if (stage == 4) { // Only execute if the game is in stage 4 (active gameplay stage)
+    if (isStartGame) { // If the game has just started
+      generateRoutine(); // Generate a new dance routine for the player to follow
+      isStartGame = false; // Set the flag to false to prevent regenerating the routine multiple times
 
-      selectAndPlayGameSound();   // Select and play a random game sound effect
-    } else {                      // If the game has already started and a routine is in progress
+      selectAndPlayGameSound(); // Select and play a random game sound effect
+    } else { // If the game has already started and a routine is in progress
       if (routineLength != hit) { // If the player did not complete the routine successfully
-        lives -= 1;               // Deduct one life from the player
-      } else {                    // If the player successfully completed the routine
-        score++;                  // Increment the player's score by one
+        lives -= 1; // Deduct one life from the player
+      } else { // If the player successfully completed the routine
+        score++; // Increment the player's score by one
       }
 
       // Check for game over conditions
@@ -450,10 +449,10 @@ function draw() {
       scoreGenerate();   // Display the player's score and remaining lives
 
       // Display a progress bar at the bottom of the screen
-      let baseHue = (frameCount * 50) % 360;              // Calculate a dynamic hue value based on frame count
-      fill(baseHue, 255, 255);                            // Set the fill color with the dynamic hue for the progress bar
-      rectMode(CORNER);                                   // Set rectangle mode to CORNER for positioning
-                                                          // Draw the progress bar representing the player's progress in the current routine
+      let baseHue = (frameCount * 50) % 360; // Calculate a dynamic hue value based on frame count
+      fill(baseHue, 255, 255); // Set the fill color with the dynamic hue for the progress bar
+      rectMode(CORNER);       // Set rectangle mode to CORNER for positioning
+      // Draw the progress bar representing the player's progress in the current routine
       rect(0, windowHeight - 50, (windowWidth / routineLength) * hit, windowHeight / 30);
 
       // Check if the player's last key input matches the expected move in the routine
@@ -479,15 +478,15 @@ function draw() {
         // Add confetti with cherry blossom emojis
         jsConfetti.addConfetti({
           emojis: ['🌸', '🌸', '🌸', '🌸', '🌸', '🌸'],
-          emojiSize: 60
+          emojiSize: 40
         })
         .then(() => jsConfetti.addConfetti({
-          emojis: ['🎊', '🎊', '🎊', '🎊', '🎊', '🎊'],
-          emojiSize: 60
+          emojis: ['🌸', '🎊', '🎊', '🎊', '🎊', '🌸'],
+          emojiSize: 40
         }))
         .then(() => jsConfetti.addConfetti({
-          emojis: ['🎊', '🎊', '🎊', '🎊', '🎊', '🎊'],
-          emojiSize: 60
+          emojis: ['🫵', '🫵', '🫵', '🫵', '🫵', '🫵'],
+          emojiSize: 40
         }));
       } else { // If the player has lost the game
         lose.play(); // Play the lose sound effect
@@ -744,7 +743,7 @@ function charrRoutine() {
 function scoreGenerate() {
   fill(255, 255, 255); // Set text color to white
   textSize(20); // Set text size to 20 pixels
-  // Display the player's remaining  (hearts) at a specific position
+  // Display the player's remaining lives (hearts) at a specific position
   text(`HEARTS: ${lives}`, windowWidth / 2.025 - (windowHeight / 50) * 6, windowHeight / 1.1);
   // Display the player's current score at a specific position
   text(`SCORE: ${score}`, windowWidth / 2.025  + (windowHeight / 50) * 7, windowHeight / 1.1);
