@@ -744,7 +744,7 @@ function scoreGenerate() {
   fill(255, 255, 255); // Set text color to white
   textSize(20); // Set text size to 20 pixels
   // Display the player's remaining  (hearts) at a specific position
-  text(`HEARTS: ${}`, windowWidth / 2.025 - (windowHeight / 50) * 6, windowHeight / 1.1);
+  text(`HEARTS: ${lives}`, windowWidth / 2.025 - (windowHeight / 50) * 6, windowHeight / 1.1);
   // Display the player's current score at a specific position
   text(`SCORE: ${score}`, windowWidth / 2.025  + (windowHeight / 50) * 7, windowHeight / 1.1);
 }
