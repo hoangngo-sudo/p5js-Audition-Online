@@ -68,7 +68,7 @@ let loadingStartTime = null;     // Timestamp when the loading screen starts
 //--------------------------------------
 
 let characterCount = 0;    // Counter for displaying characters progressively in the 'showCharr' function
-let lives = 5;             // Player's remaining lives (represented as hearts)
+let lives = 12;             // Player's remaining lives (represented as hearts)
 let hit = 0;               // Number of correct moves made by the player in the current routine
 let userKey = -1;          // Stores the player's last key input
 let routine;               // Array storing the sequence of moves generated for the player to follow
@@ -279,7 +279,7 @@ function restartGame() { // Function to reset and restart the game
 
   stage = 6;                 // Set the stage to 6 (loading screen)
   score = 0;                 // Reset the player's score to 0
-  lives = 5;                 // Reset the player's lives to 5
+  lives = 10;                 // Reset the player's lives to 5
   routineLength = 4;         // Reset the routine length to its initial value of 4
   hit = 0;                   // Reset the hit counter to 0
   isStartGame = true;        // Set the flag to indicate the game is starting
@@ -481,11 +481,11 @@ function draw() {
           emojiSize: 60
         })
         .then(() => jsConfetti.addConfetti({
-          emojis: ['🌸', '🎊', '🎊', '🎊', '🎊', '🌸'],
+          emojis: ['🎊', '🎊', '🎊', '🎊', '🎊', '🎊'],
           emojiSize: 60
         }))
         .then(() => jsConfetti.addConfetti({
-          emojis: ['🫵', '🫵', '🫵', '🫵', '🫵', '🫵'],
+          emojis: ['🎊', '🎊', '🎊', '🎊', '🎊', '🎊'],
           emojiSize: 60
         }));
       } else { // If the player has lost the game
@@ -743,8 +743,8 @@ function charrRoutine() {
 function scoreGenerate() {
   fill(255, 255, 255); // Set text color to white
   textSize(20); // Set text size to 20 pixels
-  // Display the player's remaining lives (hearts) at a specific position
-  text(`HEARTS: ${lives}`, windowWidth / 2.025 - (windowHeight / 50) * 6, windowHeight / 1.1);
+  // Display the player's remaining  (hearts) at a specific position
+  text(`HEARTS: ${}`, windowWidth / 2.025 - (windowHeight / 50) * 6, windowHeight / 1.1);
   // Display the player's current score at a specific position
   text(`SCORE: ${score}`, windowWidth / 2.025  + (windowHeight / 50) * 7, windowHeight / 1.1);
 }
