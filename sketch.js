@@ -43,12 +43,12 @@ let instruction = `In order to become a professional dancer, you need to learn t
 //-Game-Assets-Variables----------------
 //--------------------------------------
 
-let move1, move2, move3, move4; // Objects to store different dance move images (combos)
-let z; // Random index to select a combo from the 'combo' array
-let combo; // Array holding all available combos
-let arrows; // Array holding arrow images used for indicating player input
-let standardHeight; // Standard height for images to maintain consistency
-let font; // Variable to store the custom font
+let move1, move2, move3, move4;    // Objects to store different dance move images (combos)
+let z;                             // Random index to select a combo from the 'combo' array
+let combo;                         // Array holding all available combos
+let arrows;                        // Array holding arrow images used for indicating player input
+let standardHeight;                // Standard height for images to maintain consistency
+let font;                          // Variable to store the custom font
 
 //-Sound-Variables----------------------
 //--------------------------------------
@@ -68,7 +68,7 @@ let loadingStartTime = null;     // Timestamp when the loading screen starts
 //--------------------------------------
 
 let characterCount = 0;    // Counter for displaying characters progressively in the 'showCharr' function
-let lives = 5;             // Player's remaining lives (represented as hearts)
+let lives = 10;            // Player's remaining lives
 let hit = 0;               // Number of correct moves made by the player in the current routine
 let userKey = -1;          // Stores the player's last key input
 let routine;               // Array storing the sequence of moves generated for the player to follow
@@ -77,7 +77,7 @@ let pass = true;           // Indicates if the player successfully passed the ro
 let isStartGame = true;    // Flag to check if the game has just started
 let score = 0;             // Player's current score
 let win = false;           // Indicates if the player has won the game
-let timePerRoutine = 4000; // Time allocated per routine (4 seconds)
+let timePerRoutine = 3500; // Time allocated per routine (3.5 seconds)
 let bgsong;                // Variable to hold the currently playing background music
 
 //-UI element variables-----------------
@@ -230,22 +230,22 @@ function setup() {
   quitButton.class('btn effect'); // Assign CSS classes 'btn' and 'effect' for styling
   quitButton.hide(); // Initially hide the quit button until it's needed
 
-  if (stage !== 0) { // If the game is not in the initial stage (stage 0)
-    nameInput.hide();   // Hide the name input field
+  if (stage !== 0) {     // If the game is not in the initial stage (stage 0)
+    nameInput.hide();    // Hide the name input field
     submitButton.hide(); // Hide the submit button
   }
 
-  if (stage == 5) { // If the game is in stage 5 (endgame)
+  if (stage == 5) {       // If the game is in stage 5 (endgame)
     restartButton.show(); // Show the restart button
     quitButton.show();    // Show the quit button
   }
 
-  jsConfetti = new JSConfetti(); // Initialize the JSConfetti instance for confetti effects
+  jsConfetti = new JSConfetti();             // Initialize the JSConfetti instance for confetti effects
 
   let bgSound = random(preloadedSoundFiles); // Randomly select a background music track from the preloaded sounds
-  if (bgSound.isLoaded()) { // Check if the selected background music is fully loaded
-    bgSound.loop();    // Play the background music in a loop
-    bgsong = bgSound;  // Assign the playing background music to 'bgsong' for future reference
+  if (bgSound.isLoaded()) {                  // Check if the selected background music is fully loaded
+    bgSound.loop();                          // Play the background music in a loop
+    bgsong = bgSound;
   }
 
   currentGameSound = null; // Initialize 'currentGameSound' as null since no game sound is playing
@@ -277,47 +277,47 @@ function restartGame() { // Function to reset and restart the game
     currentGameSound.stop(); // Stop the currently playing game sound if it exists
   }
 
-  stage = 6;                // Set the stage to 6 (loading screen)
-  score = 0;                // Reset the player's score to 0
-  lives = 5;                // Reset the player's lives to 5
-  routineLength = 4;        // Reset the routine length to its initial value of 4
-  hit = 0;                  // Reset the hit counter to 0
-  isStartGame = true;       // Set the flag to indicate the game is starting
-  win = false;              // Reset the win flag to false
-  characterCount = 0;       // Reset the character counter to 0
-  userKey = -1;             // Reset the user's key input to -1 (no input)
-  routine = [];             // Clear the current dance routine array
-  restartButton.hide();     // Hide the restart button after restarting the game
-  fade = 0;                 // Reset the fade value to 0 for text effects
+  stage = 6;                 // Set the stage to 6 (loading screen)
+  score = 0;                 // Reset the player's score to 0
+  lives = 10;                // Reset the player's lives to 5
+  routineLength = 4;         // Reset the routine length to its initial value of 4
+  hit = 0;                   // Reset the hit counter to 0
+  isStartGame = true;        // Set the flag to indicate the game is starting
+  win = false;               // Reset the win flag to false
+  characterCount = 0;        // Reset the character counter to 0
+  userKey = -1;              // Reset the user's key input to -1 (no input)
+  routine = [];              // Clear the current dance routine array
+  restartButton.hide();      // Hide the restart button after restarting the game
+  fade = 0;                  // Reset the fade value to 0 for text effects
   stage5SoundPlayed = false; // Reset the flag to allow sounds to be played again in stage 5
-  loadingStartTime = null;  // Reset the loading start time for future loading screens
-  submitButton.hide();      // Hide the submit button after restarting the game
-  quitButton.hide();        // Hide the quit button after restarting the game
+  loadingStartTime = null;   // Reset the loading start time for future loading screens
+  submitButton.hide();       // Hide the submit button after restarting the game
+  quitButton.hide();         // Hide the quit button after restarting the game
 }
 
 //-Quit-name-function-------------------
 //--------------------------------------
 
-function quitGame() { // Function to quit the game and return to the start screen
-  stage = 0;                // Reset the game stage to 0 (start screen)
-  score = 0;                // Reset the player's score to 0
-  lives = 5;                // Reset the player's lives to 5
-  routineLength = 4;        // Reset the routine length to its initial value of 4
-  hit = 0;                  // Reset the hit counter to 0
-  isStartGame = true;       // Set the flag to indicate the game is starting
-  win = false;              // Reset the win flag to false
-  characterCount = 0;       // Reset the character counter to 0
-  userKey = -1;             // Reset the user's key input to -1 (no input)
-  routine = [];             // Clear the current dance routine array
-  restartButton.hide();     // Hide the restart button after quitting the game
-  quitButton.hide();        // Hide the quit button after quitting the game
-  fade = 0;                 // Reset the fade value to 0 for text effects
+function quitGame() {        // Function to quit the game and return to the start screen
+  stage = 0;                 // Reset the game stage to 0 (start screen)
+  score = 0;                 // Reset the player's score to 0
+  lives = 10;                // Reset the player's lives to 5
+  routineLength = 4;         // Reset the routine length to its initial value of 4
+  hit = 0;                   // Reset the hit counter to 0
+  isStartGame = true;        // Set the flag to indicate the game is starting
+  win = false;               // Reset the win flag to false
+  characterCount = 0;        // Reset the character counter to 0
+  userKey = -1;              // Reset the user's key input to -1 (no input)
+  routine = [];              // Clear the current dance routine array
+  restartButton.hide();      // Hide the restart button after quitting the game
+  quitButton.hide();         // Hide the quit button after quitting the game
+  fade = 0;                  // Reset the fade value to 0 for text effects
   stage5SoundPlayed = false; // Reset the flag to allow sounds to be played again in stage 5
 
   // Restart background music by selecting a new random track
   let bgSound = random(preloadedSoundFiles); // Randomly select a background music track
   if (bgSound.isLoaded()) { // Check if the selected background music is fully loaded
-    bgSound.loop();    // Play the background music in a loop
+    bgSound.play();    // Play the background music in a loop
     bgsong = bgSound;  // Assign the playing background music to 'bgsong' for future reference
   }
 
@@ -345,7 +345,7 @@ function checkRoutine() {
       if (lives <= 0) { // If the player has no lives left
         stage++; // Advance the game to the next stage (typically game over stage)
         stopGameSound(); // Stop any currently playing game sounds
-      } else if (score >= 10) { // If the player's score reaches or exceeds 10
+      } else if (score >= 12) { // If the player's score reaches or exceeds 10
         stage++; // Advance the game to the winning stage
         win = true; // Set the win flag to true
         stopGameSound(); // Stop any currently playing game sounds
@@ -432,7 +432,7 @@ function draw() {
     intro(); // Call the function to display introductory messages
     if (!bgsong.isPlaying()) { // If background music is not playing
       bgsong.loop(); // Loop the background music
-    } // Added closing brace here (seems misplaced in the original code)
+    }
   } 
 
   else if (stage == 2) {
@@ -463,7 +463,7 @@ function draw() {
         hit = 0;        // Reset the hit counter as the player failed to follow the routine
       }
     }
-    bgsong.pause(); // Pause the background music during active gameplay
+    bgsong.stop(); // Pause the background music during active gameplay
   } 
 
   else if (stage == 5) {
@@ -481,7 +481,7 @@ function draw() {
           emojiSize: 40
         })
         .then(() => jsConfetti.addConfetti({
-          emojis: ['🌸', '🎊', '🎊', '🎊', '🎊', '🌸'],
+          emojis: ['🎊', '🎊', '🎊', '🎊', '🎊', '🎊'],
           emojiSize: 40
         }))
         .then(() => jsConfetti.addConfetti({
