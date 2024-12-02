@@ -77,7 +77,7 @@ let pass = true;           // Indicates if the player successfully passed the ro
 let isStartGame = true;    // Flag to check if the game has just started
 let score = 0;             // Player's current score
 let win = false;           // Indicates if the player has won the game
-let timePerRoutine = 4000; // Time allocated per routine (4 seconds)
+let timePerRoutine = 3000; // Time allocated per routine (3 seconds)
 let bgsong;                // Variable to hold the currently playing background music
 
 //-UI element variables-----------------
