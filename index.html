@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,12 +9,21 @@
 
   <link rel="stylesheet" type="text/css" href="style.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script>
+  <!-- p5.js libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script>
 </head>
 
 <body>
-  <script src="sketch.js"></script>
+  <!-- language toggle switch -->
+  <div class="switch">
+    <input type="checkbox" class="check-toggle check-toggle-round-flat" id="toggle-language">
+    <label for="toggle-language"></label>
+    <span class="on"><img src="assets/unitedStates_flag.png" alt= "EN"></span>
+    <span class="off"><img src="assets/vietnam_flag.png" alt="VI"></span>
+  </div>
+  
+  <script src="sketch2.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 </body>
 
