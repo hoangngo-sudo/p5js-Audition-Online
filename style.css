@@ -1,3 +1,5 @@
+/* style.css */
+/*I used this reference language switch button from Torab Ramin: https://codepen.io/TorabRamin/pen/mqrBBj*/
 html,
 body {
   margin: 0;
@@ -9,53 +11,41 @@ canvas {
   display: block;
 }
 
-/* Styling for input fields */
 .input-field {
   font-size: 14px;
   padding: 12px 15px;
   border: 2px solid #000;
   border-radius: 5px;
   outline: none;
-  transition: border-color 0.3s ease;
   width: 200px;
   box-sizing: border-box;
 }
 
-/* Styling for btn */
 .btn {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  padding: 0;
   border: none;
   cursor: pointer;
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
   width: 120px;
   height: 45px;
   border: 2px solid;
   border-radius: 5px;
+  background-color: #a2b516;
 }
 
-
-
-/* hover state for btn */
 .btn:hover {
-  text-decoration: none;
+  background-color: #e32a1f;
+  color: #FFF;
 }
 
-/* styling for btn effects */
 .effect {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
   border: 2px solid;
   border-radius: 5px;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
   background-color: #a2b516;
 }
 
@@ -64,4 +54,117 @@ canvas {
   color: #FFF;
 }
 
+.switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: inline-block;
+  width: 97px;
+  height: 35px;
+  margin: 0 5px;
+}
 
+.switch>span {
+  position: absolute;
+  top: 14px;
+  pointer-events: none;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .06);
+  width: 50%;
+  text-align: center;
+}
+
+input.check-toggle-round-flat:checked~.off {
+  color: #a2b516;
+}
+
+input.check-toggle-round-flat:checked~.on {
+  color: #fff;
+}
+
+.switch>span.on {
+  left: 0;
+  padding-left: 2px;
+  color: #a2b516;
+}
+
+.switch>span.off {
+  right: 0;
+  padding-right: 4px;
+  color: #fff;
+}
+
+.check-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+
+.check-toggle+label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+input.check-toggle-round-flat+label {
+  padding: 2px;
+  width: 97px;
+  height: 35px;
+  background-color: #a2b516;
+  border-radius: 5px;
+}
+
+input.check-toggle-round-flat+label:before,
+input.check-toggle-round-flat+label:after {
+  display: block;
+  position: absolute;
+  content: "";
+}
+
+input.check-toggle-round-flat+label:before {
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  right: 2px;
+  background-color: #a2b516;
+  border-radius: 5px;
+}
+
+input.check-toggle-round-flat+label:after {
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  width: 48px;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: margin 0.2s;
+}
+
+input.check-toggle-round-flat:checked+label:after {
+  margin-left: 44px;
+}
+
+.switch>span.on img {
+  width: 26px;
+  height: 26px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: -6px;
+  right: -1px;
+}
+.switch>span.off img {
+  width: 26px;
+  height: 26px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: -6px;
+  left: 2px;
+
+}
