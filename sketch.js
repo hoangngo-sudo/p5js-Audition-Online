@@ -342,10 +342,10 @@ function checkRoutine() {
       }
 
       // Check for game over conditions
-      if (lives <= 0) { // If the player has no lives left
+      if (lives = 0) { // If the player has no lives left
         stage++; // Advance the game to the next stage (typically game over stage)
         stopGameSound(); // Stop any currently playing game sounds
-      } else if (score >= 12) { // If the player's score reaches or exceeds 10
+      } else if (score = 12) { // If the player's score reaches or exceeds 10
         stage++; // Advance the game to the winning stage
         win = true; // Set the win flag to true
         stopGameSound(); // Stop any currently playing game sounds
