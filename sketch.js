@@ -491,8 +491,9 @@ function draw() {
   if (stage == 0) {
     imageMode(CENTER);                                
     image(logo, windowWidth / 2, windowHeight / 2 - 150); 
-    
-    text('© 2024 made by p5js', windowWidth / 2, windowHeight / 2 + 200);
+
+    textSize(windowHeight / 36);
+    text('© 2024 created with p5js', windowWidth / 2, windowHeight / 2 + 400);
 
     push(); // Save the current drawing style settings again
     imageMode(CORNER); // Change image mode to CORNER for positioning from the top-left
@@ -859,7 +860,7 @@ function scoreGenerate() {
     heartsText = "HEARTS: ";
     scoreText = "SCORE: ";
   } else {
-    heartsText = "TRÁI TIM: ";
+    heartsText = "SỐ TIM: ";
     scoreText = "SỐ ĐIỂM: ";
   }
 
