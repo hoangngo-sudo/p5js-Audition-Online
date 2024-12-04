@@ -491,7 +491,8 @@ function draw() {
   if (stage == 0) {
     imageMode(CENTER);                                
     image(logo, windowWidth / 2, windowHeight / 2 - 150); 
-
+    
+    fill(255, 255, 255);
     textSize(windowHeight / 36);
     text('© 2024 created with p5js', windowWidth / 2, windowHeight / 2 + 400);
 
