@@ -12,13 +12,19 @@ canvas {
 }
 
 .input-field {
-  font-size: 14px;
+  font-size: 2vh;
   padding: 12px 15px;
   border: 2px solid #000;
   border-radius: 5px;
   outline: none;
   width: 200px;
   box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-field:focus {
+  border-color: #a2b516;
+  box-shadow: 0 0 5px rgba(162, 181, 22, 0.5);
 }
 
 .btn {
@@ -42,16 +48,23 @@ canvas {
 }
 
 .effect {
+  overflow: hidden;
   position: relative;
-  border: 2px solid;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  background-color: #a2b516;
 }
 
-.effect:hover {
-  background-color: #e32a1f;
-  color: #FFF;
+.effect:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.2);
+  transition: width 0.3s;
+}
+
+.effect:hover:after {
+  width: 100%;
 }
 
 .switch {
