@@ -38,23 +38,23 @@ const translations = {
     9: "Restart",
     10: "Quit",
     11: "(Press ESC to continue)",
-    12: `In order to become a professional dancer, you need to learn through practicing basic routines and knowing your moves. This small game will help you to practice your reflexes. The game will generate random moves each time you play in a routine. To win this game, you would have to remember the moves and the order of each move. There are arrows to help you which key you should press when you see a specific move. You have ten hearts representing your trials, and you have to complete a routine within a frame of time to secure these hearts. The game will end when you lose all your hearts. This game is a small version of the actual game. In the actual game, you have to remember each move and its corresponding order (arrow). The more times you play, the sooner you will become a professional audition dancer. Good luck! 
+    12: `In order to become a professional audition dancer, you need to learn through practicing basic routines and knowing your moves. This small game will help you to practice your reflexes. The game will generate random moves each time you play in a routine. To win this game, you would have to remember the moves and the order of each move. There are arrows to help you which key you should press when you see a specific move. You have ten hearts representing your trials, and you have to complete a routine within a frame of time to secure these hearts. The game will end when you lose all your hearts. This game is a small version of the actual game. In the actual game, you have to remember each move and its corresponding order (arrow). The more times you play, the sooner you will become a professional audition dancer. Good luck! 
 
 (Press ESC to continue)`
   },
   vi: {
     1: "Chào mừng đến với p5js Audition Online",
-    2: "Chúng tôi ở đây để giúp bạn trở thành một dân nhảy audition chuyên nghiệp",
+    2: "Tôi ở đây để giúp bạn trở thành một dân nhảy audition chuyên nghiệp",
     3: "Hãy thể hiện tài năng của bạn ở đây nào!",
-    4: "Luôn nhớ rằng luyện tập thường xuyên giúp bạn đạt kết quả tốt nhất",
+    4: "Luôn nhớ rằng luyện tập thường xuyên sẽ giúp bạn đạt kết quả tốt nhất",
     5: "Không còn gì để nói nữa, hãy cùng nhau bắt tay vào việc nào!!",
-    6: "Điền Tên Của Bạn vào đây",
+    6: "Điền tên của bạn",
     7: "Bắt đầu chơi!",
     8: "Phiên dịch",
-    9: "Chơi Lại",
+    9: "Chơi lại",
     10: "Thoát",
     11: "(Nhấn ESC để tiếp tục)",
-    12: `Để trở thành một dân nhảy chuyên nghiệp, bạn cần học qua việc luyện tập các bài cơ bản và nắm vững các bước nhảy của mình. Trò chơi này sẽ giúp bạn luyện tập phản xạ của mình. Trò chơi sẽ tạo ra các bước nhảy ngẫu nhiên mỗi lần bạn chơi trong một chuỗi. Để thắng trò chơi này, bạn phải nhớ các bước nhảy và thứ tự của từng bước. Có các mũi tên để giúp bạn biết phím nào bạn nên nhấn khi bạn thấy một bước nhảy cụ thể. Bạn có mười trái tim đại diện cho thử thách của mình, và bạn phải hoàn thành một chuỗi trong một khung thời gian để bảo đảm những trái tim này. Trò chơi sẽ kết thúc khi bạn mất hết trái tim. Trò chơi này là phiên bản nhỏ của trò chơi thực tế. Trong trò chơi thực tế, bạn phải nhớ từng bước nhảy và thứ tự tương ứng của nó (mũi tên). Càng chơi nhiều lần, bạn càng sớm trở thành một dân nhảy audition chuyên nghiệp. Chúc may mắn! 
+    12: `Để trở thành một dân nhảy audition chuyên nghiệp, bạn cần học qua việc luyện tập các bài cơ bản và nắm vững các bước nhảy của mình. Trò chơi này sẽ giúp bạn luyện tập phản xạ của mình. Trò chơi sẽ tạo ra các bước nhảy ngẫu nhiên mỗi lần bạn chơi trong một chuỗi. Để thắng được trò chơi này, bạn phải nhớ các bước nhảy và thứ tự của từng bước. Có các mũi tên để giúp bạn biết phím nào bạn nên nhấn khi bạn thấy một bước nhảy cụ thể. Bạn có mười trái tim đại diện cho thử thách của mình, và bạn phải hoàn thành một chuỗi trong một khung thời gian để bảo đảm những trái tim này. Trò chơi sẽ kết thúc khi bạn mất hết trái tim. Trò chơi này là phiên bản nhỏ của trò chơi thực tế. Trong trò chơi thực tế, bạn phải nhớ từng bước nhảy và thứ tự tương ứng của nó (mũi tên). Càng chơi nhiều lần, bạn càng sớm trở thành một dân nhảy audition chuyên nghiệp. Chúc may mắn! 
     
     (Nhấn ESC để tiếp tục)`
   }
@@ -196,7 +196,7 @@ function preload() {
 //--------------------------------------
 
 function setup() {
-  createCanvas(windowWidth, windowHeight); 
+  resizeCanvas(windowWidth, windowHeight); 
   imageMode(CENTER);                        
   textAlign(CENTER);                        
   frameRate(80);                            
@@ -222,15 +222,15 @@ function setup() {
 
   // Define combo objects containing dance move images
   move1 = {
-    moves: [img1, img2, img3, img4] // Combo 1 contains four different dance move images
+    moves: [img1, img2, img3, img4] 
   };
 
   move2 = {
-    moves: [img1, img2, img3, img4] // Combo 2 contains the same four dance move images
+    moves: [img1, img2, img3, img4] 
   };
 
   move3 = {
-    moves: [img1, img2, img3, img4] // Combo 3 contains the same four dance move images 
+    moves: [img1, img2, img3, img4] 
   };
 
   combo = [move1, move2, move3]; // Array holding all combo objects
@@ -493,8 +493,8 @@ function draw() {
     image(logo, windowWidth / 2, windowHeight / 2 - 150); 
     
     fill(255, 255, 255);
-    textSize(windowHeight / 36);
-    text('© 2024 created with p5js', windowWidth / 2, windowHeight / 2 + 400);
+    textSize(windowHeight / 26);
+    text('© 2024 made by p5js', windowWidth / 2, windowHeight / 2 + 300);
 
     push(); // Save the current drawing style settings again
     imageMode(CORNER); // Change image mode to CORNER for positioning from the top-left
@@ -717,24 +717,35 @@ function drawJustifiedText(txt, x, y, w) {
   }
 }
 
+function drawBlurredRect(x, y, w, h, radius, alpha) {
+  push();
+  noStroke();
+  
+  // Semi-transparent background with reduced opacity
+  fill(0, 0, 0, alpha); // Consistent dark background with fixed opacity
+  rect(x, y, w, h, radius);
+  
+  pop();
+}
 
 //-Instruction-function-----------------
 //--------------------------------------
 
 function instructionShow() {
-  fill(255, 255, 255, fade); // Set text color to white with fade transparency
-
-  // Define the dimensions of the text box where instructions will be displayed
-  let x = windowWidth / 6;                     // X-coordinate for the text box
-  let y = windowHeight / 6;                    // Y-coordinate for the text box
-  let w = windowWidth - windowWidth * (2 / 6); // Width of the text box, leaving 1/6th margin on each side
-
-  // Draw the instructions text with justification
+  const margin = 60;
+  const x = windowWidth / 6;
+  const y = windowHeight / 6;
+  const w = windowWidth - (windowWidth * (2 / 6));
+  const h = windowHeight - (windowHeight * (2 / 6));
+  
+  // Draw blurred background first
+  drawBlurredRect(x - margin, y - margin, 
+                  w + (margin * 2), h + (margin * 4), 
+                  10, 90); // Fixed opacity value 
+  
+  // Draw text with full opacity
+  fill(255, 255, 255); // Solid white color without fade
   drawJustifiedText(instruction, x, y, w);
-
-  if (fade <= 255) { // If the fade value has not reached maximum opacity
-    fade += 3;       // Increment the fade value to create a fade-in effect
-  }
 }
 
 //-Show-character-moves-function--------
@@ -744,7 +755,7 @@ function showCharr() {
   // Display the user's name at the top center of the screen
   fill(255, 255, 255); 
   textAlign(CENTER);    
-  textSize(windowHeight / 30); 
+  textSize(windowHeight / 26); 
   text(`PLAYER: ${userName}`, windowWidth / 2, windowHeight / 10);      
 
   // Display combo movements
