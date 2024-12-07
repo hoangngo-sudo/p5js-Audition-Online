@@ -199,7 +199,6 @@ function setup() {
   resizeCanvas(windowWidth, windowHeight); 
   imageMode(CENTER);                        
   textAlign(CENTER);                        
-  frameRate(80);                            
   textSize(windowHeight / 26);              
   textFont(font);                          
 
@@ -587,8 +586,12 @@ function draw() {
     fill(255, 255, 255); 
     textAlign(CENTER);    
     textSize(windowHeight / 26); 
+
+    restartButton.html('<span>' + langTexts[9] + '</span>');
     restartButton.show();   
+    quitButton.html('<span>' + langTexts[10] + '</span>');
     quitButton.show();    
+    
     if (win) { // If the player has won
       let winMessage;
       if (langTexts[1].includes('Welcome')) {
@@ -955,7 +958,7 @@ function displayLoadingScreen() {
 
   // Add loading tips
   let tips = [];
-  if (translations[currentLanguage][1].includes('Welcome')) {
+  if (langTexts[1].includes('Welcome')) {
     tips.push("Use arrow keys to match the dance moves");
     tips.push("Watch your remaining hearts");
     tips.push("Perfect your timing to score higher");
@@ -982,10 +985,10 @@ function displayLoadingScreen() {
 //--------------------------------------
 function fadeIO() {
   if (fade <= 0) {
-    fadeAmount = 3;
+    fadeAmount = 8;
   }                   // If fade is fully transparent or below, start fading in by increasing 'fadeAmount'
   if (fade > 255) {
-    fadeAmount = -3;
+    fadeAmount = -8;
   }                   // If fade exceeds full opacity, start fading out by decreasing 'fadeAmount'
   fade += fadeAmount; // Update the fade value based on 'fadeAmount'
 }
