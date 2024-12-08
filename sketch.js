@@ -34,14 +34,20 @@ const translations = {
     5: "Now, without further ado, let's practice together",
     6: "Enter Your Name",
     7: "GO!",
-    8: "Translate!",
+    8: "PLAYER",
     9: "Restart",
     10: "Quit",
     11: "(Press ESC to continue)",
     12: `In order to become a professional audition dancer, you need to learn through practicing basic routines and knowing your moves. This small game will help you to practice your reflexes. The game will generate random moves each time you play in a routine. To win this game, you would have to remember the moves and the order of each move. There are arrows to help you which key you should press when you see a specific move. You have ten hearts representing your trials, and you have to complete a routine within a frame of time to secure these hearts. The game will end when you lose all your hearts. This game is a small version of the actual game. In the actual game, you have to remember each move and its corresponding order (arrow). The more times you play, the sooner you will become a professional audition dancer. Good luck! 
 
-(Press ESC to continue)`
+(Press ESC to continue)`,
+    13: "HEARTS",
+    14: "SCORE",
+    15: "you won the routine",
+    16: "you need to try harder :(",
+    17: "Loading"
   },
+
   vi: {
     1: "Chào mừng đến với p5js Audition Online",
     2: "Tôi ở đây để giúp bạn trở thành một dân nhảy audition chuyên nghiệp",
@@ -50,13 +56,18 @@ const translations = {
     5: "Không còn gì để nói nữa, hãy cùng nhau bắt tay vào việc nào!!",
     6: "Điền tên của bạn",
     7: "Bắt đầu chơi!",
-    8: "Phiên dịch",
+    8: "NGƯỜI CHƠI",
     9: "Chơi lại",
     10: "Thoát",
     11: "(Nhấn ESC để tiếp tục)",
     12: `Để trở thành một dân nhảy audition chuyên nghiệp, bạn cần học qua việc luyện tập các bài cơ bản và nắm vững các bước nhảy của mình. Trò chơi này sẽ giúp bạn luyện tập phản xạ của mình. Trò chơi sẽ tạo ra các bước nhảy ngẫu nhiên mỗi lần bạn chơi trong một chuỗi. Để thắng được trò chơi này, bạn phải nhớ các bước nhảy và thứ tự của từng bước. Có các mũi tên để giúp bạn biết phím nào bạn nên nhấn khi bạn thấy một bước nhảy cụ thể. Bạn có mười trái tim đại diện cho thử thách của mình, và bạn phải hoàn thành một chuỗi trong một khung thời gian để bảo đảm những trái tim này. Trò chơi sẽ kết thúc khi bạn mất hết trái tim. Trò chơi này là phiên bản nhỏ của trò chơi thực tế. Trong trò chơi thực tế, bạn phải nhớ từng bước nhảy và thứ tự tương ứng của nó (mũi tên). Càng chơi nhiều lần, bạn càng sớm trở thành một dân nhảy audition chuyên nghiệp. Chúc may mắn! 
     
-    (Nhấn ESC để tiếp tục)`
+    (Nhấn ESC để tiếp tục)`,
+    13: "SỐ TIM",
+    14: "ĐIỂM",
+    15: "bạn đã thắng màn này",
+    16: "bạn cần phải cố gắng hơn :(",
+    17: "Đang tải"
   }
 };
 let currentLanguage = 'en'; // Default language
@@ -260,7 +271,7 @@ function setup() {
   restartButton.hide();                                                 // Initially hide the restart button
 
   quitButton = createButton('');                                        // Create a quit button for exiting the game
-  quitButton.html('<span>' + langTexts[10] + '</span>');                // Set the HTML content of the button to display 'Quit'
+  quitButton.html('<span>' + langTexts[10] + '</span>');                
   quitButton.position(windowWidth / 2 - 180, windowHeight / 2 + 100);   // Position the button below the center, to the left
   quitButton.mousePressed(quitGame);                                    // When pressed, call the 'quitGame' function
   quitButton.class('btn effect');                                       // Assign CSS classes 'btn' and 'effect'
@@ -593,21 +604,9 @@ function draw() {
     quitButton.show();    
     
     if (win) { // If the player has won
-      let winMessage;
-      if (langTexts[1].includes('Welcome')) {
-        winMessage = "you won the routine";
-      } else {
-        winMessage = "Bạn đã thắng";
-      }
-      text(`${userName}, ${winMessage}`, windowWidth / 2, windowHeight / 2 + 50); // Display win message with player's name
+      text(`${userName}, ${langTexts[15]}`, windowWidth / 2, windowHeight / 2 + 50); // Display win message with player's name
     } else { // If the player has lost
-      let loseMessage;
-      if (langTexts[1].includes('Welcome')) {
-        loseMessage = "you need to try harder :(";
-      } else {
-        loseMessage = "bạn cần cố gắng hơn :(";
-      }
-      text(`${userName}, ${loseMessage}`, windowWidth / 2, windowHeight / 2 + 50); // Display lose message with player's name
+      text(`${userName}, ${langTexts[16]}`, windowWidth / 2, windowHeight / 2 + 50); // Display lose message with player's name
     }
   } 
 
@@ -758,8 +757,8 @@ function showCharr() {
   // Display the user's name at the top center of the screen
   fill(255, 255, 255); 
   textAlign(CENTER);    
-  textSize(windowHeight / 26); 
-  text(`PLAYER: ${userName}`, windowWidth / 2, windowHeight / 10);      
+  textSize(windowHeight / 26);
+  text(`${langTexts[8]}: ${userName}`, windowWidth / 2, windowHeight / 10);
 
   // Display combo movements
   if (characterCount >= 1) { // If at least one character has been displayed
@@ -867,22 +866,10 @@ function charrRoutine() {
 function scoreGenerate() {
   fill(255, 255, 255); // Set text color to white
   textSize(26); // Set text size to 20 pixels
+
   // Display the player's remaining lives (hearts) at a specific position
-  let heartsText;
-  let scoreText;
-
-  if (langTexts[6].includes('Enter')) {
-    heartsText = "HEARTS: ";
-    scoreText = "SCORE: ";
-  } else {
-    heartsText = "SỐ TIM: ";
-    scoreText = "SỐ ĐIỂM: ";
-  }
-
-  text(`${heartsText}${lives}`, windowWidth / 2.025 - (windowHeight / 50) * 6, windowHeight / 1.1);
-  text(`${scoreText}${score}`, windowWidth / 2.025  + (windowHeight / 50) * 7, windowHeight / 1.1);
-
-
+  text(`${langTexts[13]}: ${lives}`, windowWidth / 2.025 - (windowHeight / 50) * 6, windowHeight / 1.1);
+  text(`${langTexts[14]}: ${score}`, windowWidth / 2.025  + (windowHeight / 50) * 7, windowHeight / 1.1);
 }
 
 //-Select-GameSound-function------------
@@ -938,13 +925,7 @@ function displayLoadingScreen() {
   textAlign(CENTER);
   textSize(windowHeight / 30);
   let dots = '.'.repeat(floor((millis() / 500) % 4));
-  let loadingText;
-  if (langTexts[8].includes('Translate')) {
-    loadingText = "Loading";
-  } else {
-    loadingText = "Đang tải";
-  }
-  text(`${loadingText}${dots}`, windowWidth / 2, windowHeight / 2 + 50);
+  text(`${langTexts[17]}${dots}`, windowWidth / 2, windowHeight / 2 + 50);
 
   // Draw loading progress bar
   let barWidth = windowWidth / 5;
@@ -957,16 +938,15 @@ function displayLoadingScreen() {
   rect(windowWidth/2 - barWidth/2, windowHeight/2 + 80, barWidth * progress, barHeight);
 
   // Add loading tips
-  let tips = [];
-  if (langTexts[1].includes('Welcome')) {
-    tips.push("Use arrow keys to match the dance moves");
-    tips.push("Watch your remaining hearts");
-    tips.push("Perfect your timing to score higher");
-  } else {
-    tips.push("Sử dụng phím mũi tên để bắt chước các bước nhảy cho phù hợp");
-    tips.push("Theo dõi số trái tim còn lại");
-    tips.push("Hoàn thiện thời gian của bạn để ghi điểm cao hơn");
-  }
+  let tips = langTexts[1].includes('Welcome') ? [
+    "Use arrow keys to match the dance moves",
+    "Watch your remaining hearts",
+    "Perfect your timing to score higher"
+  ] : [
+    "Sử dụng phím mũi tên để bắt chước các bước nhảy cho phù hợp",
+    "Theo dõi số trái tim còn lại",
+    "Hoàn thiện thời gian của bạn để ghi điểm cao hơn"
+  ];
 
   let currentTip = tips[floor((millis() / 2000) % tips.length)];
   textSize(windowHeight / 40);
@@ -985,10 +965,10 @@ function displayLoadingScreen() {
 //--------------------------------------
 function fadeIO() {
   if (fade <= 0) {
-    fadeAmount = 8;
+    fadeAmount = 6;
   }                   // If fade is fully transparent or below, start fading in by increasing 'fadeAmount'
   if (fade > 255) {
-    fadeAmount = -8;
+    fadeAmount = -6;
   }                   // If fade exceeds full opacity, start fading out by decreasing 'fadeAmount'
   fade += fadeAmount; // Update the fade value based on 'fadeAmount'
 }
